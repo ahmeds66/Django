@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Consulter Notes</h1>
+        {{now}}
+        <hr>
+        {% if sexe == 'M' %}
+        <h3><b>Etudiant {{nom|upper}} {{prenom}}</b></h3>
+        {% else %}
+        <h3><b>Etudiante {{nom}} {{prenom}}</b></h3>
+        {% endif %}
+            {% for notes in notes %}
+            <li><b>TP {{forloop.counter}}:</b>
+                 {% if notes == 0.00 %}
+                 <span style="color:red ; font-size:100px">Absence</span>
+                 {% else %}
+                 {{notes|floatformat:2}}
+                 {% endif %}</li>
+        </ul>
+        {%empty%}
+        <p>Aucune note n'a été saisie pour cet étudiant.</p>
+        {%endfor%}
+        <a href="back/">< Retour</a>   
+    </body>
+</html>
